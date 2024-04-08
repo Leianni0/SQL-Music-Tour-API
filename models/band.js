@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         as: "set_times"
       })
     }
-  }
+  };
   Band.init({
     band_id: {
       type: DataTypes.INTEGER,
@@ -47,4 +47,4 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   })
   return Band
-}
+};
