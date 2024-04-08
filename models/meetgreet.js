@@ -4,8 +4,12 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class MeetGreet extends Model {
-    static associate(models) {}
-  }
+    static associate({ Band, Event }) {
+      MeetGreet.belongsTo(Band, {
+        foreignKey: "band_id",
+        as: "band"
+      })
+  }};
   MeetGreet.init({
     meet_greet_id: DataTypes.INTEGER,
     event_id: DataTypes.SMALLINT,

@@ -4,8 +4,12 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class SetTime extends Model {
-    static associate(models) {}
-  }
+    static associate({ Band, Event, Stage }) {
+      SetTime.belongsTo(Band, {
+        foreignKey: "band_id",
+        as: "band"
+      })
+  }};
   SetTime.init({
     set_time_id: DataTypes.INTEGER,
     event_id: DataTypes.SMALLINT,

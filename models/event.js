@@ -4,8 +4,13 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Event extends Model {
-    static associate(models) {}
-  }
+    static associate({ Stage, StageEvent, MeetGreet, SetTime }) {
+      Event.belongsToMany(Stage, {
+        foreignKey: "event_id",
+        as: "stages",
+        through: StageEvent
+      })
+  }};
   Event.init({
     event_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
